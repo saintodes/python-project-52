@@ -41,6 +41,43 @@ python-versions = ">=3.7"
 django = ">=3.2"
 
 [[package]]
+name = "flake8"
+version = "6.1.0"
+description = "the modular source code checker: pep8 pyflakes and co"
+category = "main"
+optional = false
+python-versions = ">=3.8.1"
+
+[package.dependencies]
+mccabe = ">=0.7.0,<0.8.0"
+pycodestyle = ">=2.11.0,<2.12.0"
+pyflakes = ">=3.1.0,<3.2.0"
+
+[[package]]
+name = "mccabe"
+version = "0.7.0"
+description = "McCabe checker, plugin for flake8"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[[package]]
+name = "pycodestyle"
+version = "2.11.1"
+description = "Python style guide checker"
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[[package]]
+name = "pyflakes"
+version = "3.1.0"
+description = "passive checker of Python programs"
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[[package]]
 name = "python-dotenv"
 version = "1.0.0"
 description = "Read key-value pairs from a .env file and set them as environment variables"
@@ -83,12 +120,16 @@ python-versions = ">=2"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "0801b442ba8c33b35973a2e640ac33f2c888173f56e428e17c22bd525b17b1da"
+content-hash = "2ebdde87b10a562d371681ce2c7fdbf35e2634b3f4a20ce9b745c76818813db0"
 
 [metadata.files]
 asgiref = []
 django = []
 django-bootstrap5 = []
+flake8 = []
+mccabe = []
+pycodestyle = []
+pyflakes = []
 python-dotenv = []
 sqlparse = []
 typing-extensions = []
