@@ -1,5 +1,3 @@
-from task_manager import views
-
 """
 URL configuration for task_manager project.
 
@@ -18,8 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from .views import IndexView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index),
+    path('', IndexView.as_view(), name='index'),
 ]
