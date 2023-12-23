@@ -30,6 +30,17 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "django-bootstrap5"
+version = "23.3"
+description = "Bootstrap 5 for Django"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+django = ">=3.2"
+
+[[package]]
 name = "python-dotenv"
 version = "1.0.0"
 description = "Read key-value pairs from a .env file and set them as environment variables"
@@ -72,11 +83,12 @@ python-versions = ">=2"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "341c5ac7d19a6bb81489f9e8076e3fc670269b388b8e50c6f2f40a3ec254a8da"
+content-hash = "0801b442ba8c33b35973a2e640ac33f2c888173f56e428e17c22bd525b17b1da"
 
 [metadata.files]
 asgiref = []
 django = []
+django-bootstrap5 = []
 python-dotenv = []
 sqlparse = []
 typing-extensions = []
