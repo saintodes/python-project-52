@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure-++qimqhl=o!laj$vnjid8&jzv9!5=_h@h3sxy4*=+kn541dig$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['task-manager-1ccz.onrender.com']
+ALLOWED_HOSTS = [
+    'task-manager-1ccz.onrender.com',
+    '127.0.0.1',]
 
 
 # Application definition
@@ -37,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'task_manager',
+    'django_bootstrap5',
 ]
 
 MIDDLEWARE = [
@@ -54,7 +58,7 @@ ROOT_URLCONF = 'task_manager.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

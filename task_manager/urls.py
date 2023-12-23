@@ -1,3 +1,5 @@
+from task_manager import views
+
 """
 URL configuration for task_manager project.
 
@@ -19,4 +21,5 @@ from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.index),
 ]
