@@ -12,6 +12,7 @@ Django = "^5.0"
 python-dotenv = "^1.0.0"
 django-bootstrap5 = "^23.3"
 flake8 = "^6.1.0"
+whitenoise = "^6.6.0"
 
 [tool.poetry.dev-dependencies]
 
