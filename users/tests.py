@@ -82,3 +82,59 @@ class UsersViewTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'users/users_list.html')
         self.assertEqual(len(response.context['users_list']), 2)
+
+
+class UpdateUserTestCase(TestCase):
+
+    @classmethod
+    def setUpTestData(cls):
+        cls.user = User.objects.create_user(username='updateuser', password='password123', email='updateuser@test.com')
+
+    def test_update_user_page(self):
+        self.client.login(username='updateuser', password='password123')
+        response = self.client.get(reverse('users:update', kwargs={'pk': self.user.pk}))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'users/update.html')
+
+    def test_successful_user_update(self):
+        self.client.login(username='updateuser', password='password123')
+        response = self.client.post(reverse('users:update', kwargs={'pk': self.user.pk}), {
+            'username': 'updateduser',
+            'first_name': 'new_first_name',
+            'last_name': 'new_last_name',
+            'password1': 'newpassword123',
+            'password2': 'newpassword123',
+        })
+        if response.status_code != 302:
+            print("Form errors:", response.context['form'].errors)
+        self.assertRedirects(response, reverse('users:users_list'))
+        self.user.refresh_from_db()
+        self.assertEqual(self.user.username, 'updateduser')
+        self.assertEqual(self.user.first_name, 'new_first_name')
+        self.assertEqual(self.user.last_name, 'new_last_name')
+
+    def test_update_user_form_errors(self):
+        self.client.login(username='updateuser', password='password123')
+        response = self.client.post(reverse('users:update', kwargs={'pk': self.user.pk}), {})
+        self.assertEqual(response.status_code, 200)
+        self.assertFalse(response.context['form'].is_valid())
+
+
+class DeleteUserTestCase(TestCase):
+
+    @classmethod
+    def setUpTestData(cls):
+        cls.user = User.objects.create_user(username='deleteuser', password='password123')
+
+    def test_delete_user_page(self):
+        self.client.login(username='deleteuser', password='password123')
+        response = self.client.get(reverse('users:delete', kwargs={'pk': self.user.pk}))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'users/delete.html')
+
+    def test_successful_user_deletion(self):
+        self.client.login(username='deleteuser', password='password123')
+        response = self.client.post(reverse('users:delete', kwargs={'pk': self.user.pk}))
+        self.assertRedirects(response, reverse('users:users_list'))
+        with self.assertRaises(User.DoesNotExist):
+            User.objects.get(pk=self.user.pk)
