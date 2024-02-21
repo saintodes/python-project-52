@@ -3,6 +3,7 @@ from django.urls import path
 from users import views
 
 app_name = 'users'
-urlpatterns = [path('create/', views.RegisterUser.as_view(), name='create'),
-
-               ]
+urlpatterns = [
+    path('', views.UsersView.as_view(), name='users_list'),
+    path('create/', views.RegisterUser.as_view(), name='create'),
+]

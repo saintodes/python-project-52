@@ -12,6 +12,7 @@ def tasks_home(request):
     context = {'title': title}
     return render(request, 'task_manager/index.html', context)
 
+
 class LoginUser(LoginView):
     form_class = LoginUserForm
     template_name = 'task_manager/login.html'
