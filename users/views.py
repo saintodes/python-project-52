@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+from django.contrib.auth.mixins import LoginRequiredMixin
 # from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy
@@ -24,7 +25,7 @@ class UsersView(ListView):
         return User.objects.only('id', 'username', 'first_name', 'last_name', 'date_joined')
 
 
-class UpdateUser(UpdateView):
+class UpdateUser(LoginRequiredMixin, UpdateView):
     model = get_user_model()
     form_class = RegisterUserForm
     template_name = 'users/update.html'
@@ -33,7 +34,7 @@ class UpdateUser(UpdateView):
     # permission_required = 'users.change_user'
 
 
-class DeleteUser(DeleteView):
+class DeleteUser(LoginRequiredMixin, DeleteView):
     model = User
     template_name = 'users/delete.html'
     extra_context = {'title': 'Delete user'}
