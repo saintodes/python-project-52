@@ -10,6 +10,12 @@ run:
 shell:
 	poetry run python3 manage.py shell
 
+makemigrations:
+	poetry run python3 manage.py makemigrations
+
+migrate:
+	poetry run python3 manage.py migrate
+
 makemessages-ru:
 	poetry run django-admin makemessages -l ru
 

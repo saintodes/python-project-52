@@ -1,7 +1,8 @@
 {% extends 'task_manager/base.html' %}
+{% load i18n %}
 
 {% block content %}
-<h1>Авторизация</h1>
+<h1>{% trans "Authorisation" %}</h1>
 
 <form method="post">
     {% csrf_token %}
