@@ -1,9 +1,8 @@
+from django.contrib.auth import get_user_model
+# from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.auth.models import User
-from django.contrib.auth.views import LoginView
-from django.db.models import Value
-from django.db.models.functions import Concat
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, UpdateView
 
 from users.forms import RegisterUserForm
 
@@ -23,3 +22,13 @@ class UsersView(ListView):
 
     def get_queryset(self):
         return User.objects.only('id', 'username', 'first_name', 'last_name', 'date_joined')
+
+
+class UpdateUser(UpdateView):
+    model = get_user_model()
+    form_class = RegisterUserForm
+    template_name = 'users/update.html'
+    extra_context = {'title': 'User profile'}
+    success_url = reverse_lazy('users:users_list')
+    # permission_required = 'users.change_user'
+

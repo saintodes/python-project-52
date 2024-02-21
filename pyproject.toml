@@ -8,6 +8,8 @@ authors = ["Your Name <you@example.com>"]
 python = "^3.10"
 Django = "^5.0.2"
 django-bootstrap5 = "^23.4"
+django-extensions = "^3.2.3"
+ipython = "^8.21.0"
 [tool.poetry.dev-dependencies]
 flake8 = "^7.0.0"
 
