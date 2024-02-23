@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from django.utils.translation import gettext
 
+from task_manager.mixins import AuthPassesTestMixin
 from users.forms import RegisterUserForm
 
 
@@ -26,7 +27,7 @@ class UsersView(ListView):
         return User.objects.only('id', 'username', 'first_name', 'last_name', 'date_joined')
 
 
-class UpdateUser(LoginRequiredMixin, UpdateView):
+class UpdateUser(AuthPassesTestMixin, LoginRequiredMixin, UpdateView):
     model = get_user_model()
     form_class = RegisterUserForm
     template_name = 'users/update.html'
@@ -35,7 +36,7 @@ class UpdateUser(LoginRequiredMixin, UpdateView):
     # permission_required = 'users.change_user'
 
 
-class DeleteUser(LoginRequiredMixin, DeleteView):
+class DeleteUser(AuthPassesTestMixin, LoginRequiredMixin, DeleteView):
     model = get_user_model()
     template_name = 'users/delete.html'
     extra_context = {'title': gettext('Delete user')}
