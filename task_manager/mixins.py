@@ -13,5 +13,5 @@ class AuthPassesTestMixin(UserPassesTestMixin):
         return self.request.user == user_being_edited or self.request.user.is_superuser
 
     def handle_no_permission(self):
-        messages.error(self.request, FLASH_MESSAGES_TEXT["change_user_data_auth_failed"])
+        messages.warning(self.request, FLASH_MESSAGES_TEXT["change_user_data_auth_failed"])
         return redirect(reverse_lazy('users:users_list'))
