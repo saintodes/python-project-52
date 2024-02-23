@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-20 15:57+0300\n"
+"POT-Creation-Date: 2024-02-22 16:54+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,9 +20,13 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: task_manager/templates/task_manager/index.html:6
+#: task_manager/templates/task_manager/index.html:5
 msgid "Hello, index!"
 msgstr "Привет шаблон главной страницы!"
+
+#: task_manager/templates/task_manager/login.html:5 task_manager/views.py:23
+msgid "Authorisation"
+msgstr "Авторизация"
 
 #: task_manager/templates/task_manager/navbar.html:5
 msgid "Task manager"
@@ -33,6 +37,7 @@ msgid "Toggle navigation"
 msgstr "Переключить навигацию"
 
 #: task_manager/templates/task_manager/navbar.html:12
+#: users/templates/users/users_list.html:5
 msgid "Users"
 msgstr "Пользователи"
 
@@ -41,6 +46,7 @@ msgid "Login"
 msgstr "Вход"
 
 #: task_manager/templates/task_manager/navbar.html:19
+#: users/templates/users/create.html:5 users/views.py:16
 msgid "Registration"
 msgstr "Регистрация"
 
@@ -56,13 +62,166 @@ msgstr "Метки"
 msgid "Tasks"
 msgstr "Задачи"
 
-#: task_manager/templates/task_manager/navbar.html:32
+#: task_manager/templates/task_manager/navbar.html:34
 msgid "Logout"
 msgstr "Выход"
 
-#: task_manager/views.py:6
+#: task_manager/utils.py:4
+msgid "You are logged in"
+msgstr "Вы залогинены"
+
+#: task_manager/utils.py:5
+msgid "You are logged out"
+msgstr "Вы разлогинены"
+
+#: task_manager/views.py:15
 msgid "Main Page"
 msgstr "Главная страница"
+
+#: users/forms.py:11
+msgid ""
+"Required field. No more than 150 characters. Only letters, numbers, and "
+"symbols. @/./+/-/_."
+msgstr ""
+"Обязательное поле. Не более 150 символов. Только буквы, цифры и символы @/./"
+"+/-/_."
+
+#: users/forms.py:14 users/forms.py:34
+msgid "Your password must contain at least 3 characters."
+msgstr "Ваш пароль должен содержать как минимум 3 символа."
+
+#: users/forms.py:17
+msgid "Please enter your password again for confirmation."
+msgstr "Для подтверждения введите, пожалуйста, пароль ещё раз."
+
+#: users/forms.py:23
+msgid "First name"
+msgstr "Имя"
+
+#: users/forms.py:24
+msgid "Last name"
+msgstr "Фамилия"
+
+#: users/forms.py:40
+msgid "The username length cannot exceed 150 characters."
+msgstr "Имя пользователя не может превышать 150 символов "
+
+#: users/forms.py:42
+msgid ""
+"The username can only contain letters, numbers, and the symbols @/./+/-/_."
+msgstr ""
+"Введите правильное имя пользователя. Оно может содержать только буквы, цифры "
+"и знаки @/./+/-/_."
+
+#: users/templates/users/create.html:27
+#, fuzzy
+#| msgid "Registration"
+msgid "Register"
+msgstr "Регистрация"
+
+#: users/templates/users/delete.html:6 users/templates/users/update.html:5
+#: users/views.py:33
+msgid "User update"
+msgstr "Обновление данных пользователя"
+
+#: users/templates/users/delete.html:8
+msgid "Are you sure you want to delete"
+msgstr "Вы уверены, что хотиле удалить"
+
+#: users/templates/users/delete.html:10
+msgid "Yes, delete"
+msgstr "Да, удалить"
+
+#: users/templates/users/update.html:27
+#: users/templates/users/users_list.html:26
+msgid "Update"
+msgstr "Изменить"
+
+#: users/templates/users/users_list.html:10
+#, fuzzy
+#| msgid "Users"
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: users/templates/users/users_list.html:11
+msgid "Full name"
+msgstr "Полное имя"
+
+#: users/templates/users/users_list.html:12
+msgid "Creation date"
+msgstr "Дата создания"
+
+#: users/templates/users/users_list.html:27
+#: venv/lib/python3.10/site-packages/django/forms/formsets.py:499
+msgid "Delete"
+msgstr "Удалить"
+
+#: users/views.py:41
+msgid "Delete user"
+msgstr "Удаление пользователя"
+
+#: venv/lib/python3.10/site-packages/IPython/core/tests/test_completer.py:428
+msgid "open('foo"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/IPython/core/tests/test_completer.py:432
+msgid "open(\"foo"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/IPython/core/tests/test_completer.py:436
+#, python-format
+msgid "%ls foo"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/IPython/core/tests/test_completer.py:591
+msgid "a[0]."
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/IPython/core/tests/test_completer.py:598
+msgid "a[0].r"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/IPython/core/tests/test_completer.py:606
+msgid "a[0].from_"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/IPython/core/tests/test_completer.py:613
+msgid "assert str.star"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/IPython/core/tests/test_completer.py:620
+msgid "d['a b'].str"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/IPython/core/tests/test_completer.py:1580
+#: venv/lib/python3.10/site-packages/IPython/core/tests/test_completer.py:1602
+#: venv/lib/python3.10/site-packages/IPython/core/tests/test_completer.py:1605
+msgid "do not suppress"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/IPython/core/tests/test_completer.py:1581
+#: venv/lib/python3.10/site-packages/IPython/core/tests/test_completer.py:1593
+#: venv/lib/python3.10/site-packages/IPython/core/tests/test_completer.py:1596
+#: venv/lib/python3.10/site-packages/IPython/core/tests/test_completer.py:1599
+msgid "suppress all"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/IPython/core/tests/test_completer.py:1582
+msgid "suppress all but a"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/IPython/core/tests/test_completer.py:1583
+msgid "suppress all but c"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/IPython/core/tests/test_completer.py:1631
+#: venv/lib/python3.10/site-packages/IPython/core/tests/test_completer.py:1634
+msgid "---"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/IPython/core/tests/test_completer.py:1637
+msgid "--"
+msgstr ""
 
 #: venv/lib/python3.10/site-packages/bootstrap5/components.py:17
 #: venv/lib/python3.10/site-packages/bootstrap5/templates/bootstrap5/form_errors.html:3
@@ -649,10 +808,6 @@ msgstr[1] ""
 #: venv/lib/python3.10/site-packages/django/forms/formsets.py:484
 #: venv/lib/python3.10/site-packages/django/forms/formsets.py:491
 msgid "Order"
-msgstr ""
-
-#: venv/lib/python3.10/site-packages/django/forms/formsets.py:499
-msgid "Delete"
 msgstr ""
 
 #: venv/lib/python3.10/site-packages/django/forms/models.py:899
