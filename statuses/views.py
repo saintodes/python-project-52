@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.utils.translation import gettext
@@ -5,6 +6,7 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 from statuses.forms import CreateStatusForm
 from statuses.models import Status
+from task_manager.utils import FLASH_MESSAGES_TEXT
 
 
 # Create your views here.
@@ -35,9 +37,19 @@ class StatusUpdateView(LoginRequiredMixin, UpdateView):
     extra_context = {'title': gettext('Status update')}
     success_url = reverse_lazy('statuses:statuses_list')
 
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, FLASH_MESSAGES_TEXT["status_update_success"])
+        return response
+
 
 class StatusDeleteUser(LoginRequiredMixin, DeleteView):
     model = Status
     template_name = 'statuses/delete.html'
     extra_context = {'title': gettext('Delete status')}
     success_url = reverse_lazy('statuses:statuses_list')
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, FLASH_MESSAGES_TEXT["status_delete_success"])
+        return response

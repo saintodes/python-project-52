@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.utils.translation import gettext
 
 
 class Status(models.Model):
@@ -16,8 +17,8 @@ class Status(models.Model):
                                blank=True, verbose_name="Author")
 
     class Meta:
-        verbose_name = 'Status'
-        verbose_name_plural = 'Statuses'
+        verbose_name = gettext('Status')
+        verbose_name_plural = gettext('Statuses')
 
     def __str__(self):
         return self.name
