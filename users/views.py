@@ -36,7 +36,7 @@ class UpdateUser(LoginRequiredMixin, UpdateView):
 
 
 class DeleteUser(LoginRequiredMixin, DeleteView):
-    model = User
+    model = get_user_model()
     template_name = 'users/delete.html'
     extra_context = {'title': gettext('Delete user')}
     success_url = reverse_lazy('users:users_list')
