@@ -17,7 +17,8 @@ class RegisterUserTestCase(TestCase):
             'username': 'testuser',
             'password1': 'password123',
             'password2': 'password123',
-            'email': 'test@test.com'
+            'first_name': 'test first name',
+            'last_name': 'test last name',
         }
         response = self.client.post(reverse('users:create'), user_data)
         self.assertRedirects(response, reverse('login'))
@@ -57,6 +58,8 @@ class RegisterUserFormTest(TestCase):
             'username': 'testuser',
             'password1': 'password123',
             'password2': 'password123',
+            'first_name': 'testfname',
+            'last_name': 'testlname'
         })
         self.assertTrue(form.is_valid())
 

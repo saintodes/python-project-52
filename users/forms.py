@@ -15,18 +15,14 @@ class RegisterUserForm(UserCreationForm):
     password2 = forms.CharField(label="Password repeat", widget=forms.PasswordInput(
         attrs={'class': 'form-control', "autocomplete": "new-password"}),
                                 help_text=gettext('Please enter your password again for confirmation.'))
+    first_name = forms.CharField(label=gettext("First name"), widget=forms.TextInput(attrs={'class': 'form-control'}),
+                                 required=True)
+    last_name = forms.CharField(label=gettext("Last name"), widget=forms.TextInput(attrs={'class': 'form-control'}),
+                                required=True)
 
     class Meta:
         model = get_user_model()
         fields = ['first_name', 'last_name', 'username', 'password1', 'password2']
-        labels = {
-            'first_name': gettext("First name"),
-            'last_name': gettext("Last name"),
-        }
-        widgets = {
-            'first_name': forms.TextInput(attrs={'class': 'form-control'}),
-            'last_name': forms.TextInput(attrs={'class': 'form-control'}),
-        }
 
     def clean_password1(self):
         password = self.cleaned_data.get('password1')
