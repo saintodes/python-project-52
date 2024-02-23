@@ -9,6 +9,7 @@ run:
 
 shell:
 	python manage.py shell_plus --print-sql
+
 makemigrations:
 	poetry run python3 manage.py makemigrations
 

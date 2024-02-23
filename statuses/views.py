@@ -1,5 +1,4 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.utils.translation import gettext
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
@@ -37,7 +36,7 @@ class StatusUpdateView(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy('statuses:statuses_list')
 
 
-class StatusDeleteUser(DeleteView):
+class StatusDeleteUser(LoginRequiredMixin, DeleteView):
     model = Status
     template_name = 'statuses/delete.html'
     extra_context = {'title': gettext('Delete status')}
