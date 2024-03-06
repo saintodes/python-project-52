@@ -25,6 +25,7 @@ class TasksView(LoginRequiredMixin, ListView):
         if form.is_valid():
             status = form.cleaned_data.get('status')
             executor = form.cleaned_data.get('executor')
+            label = form.cleaned_data.get('label')
             self_tasks = form.cleaned_data.get('self_tasks')
 
             if status:
@@ -33,6 +34,8 @@ class TasksView(LoginRequiredMixin, ListView):
                 queryset = queryset.filter(performer_user_id=executor)
             if self_tasks:
                 queryset = queryset.filter(created_by_user_id=self.request.user)
+            if label:
+                queryset = queryset.filter(label=label)
 
         return queryset
 
@@ -78,5 +81,5 @@ class TasksDeleteView(UserIsTaskCreatorOrSuperUserMixin, LoginRequiredMixin, Del
 
     def form_valid(self, form):
         response = super().form_valid(form)
-        messages.success(self.request, FLASH_MESSAGES_TEXT["status_delete_success"])
+        messages.success(self.request, FLASH_MESSAGES_TEXT["task_delete_success"])
         return response

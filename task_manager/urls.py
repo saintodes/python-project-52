@@ -28,4 +28,5 @@ urlpatterns = [
     path('statuses/', include('statuses.urls', namespace='statuses')),
     path('login/', views.LoginUser.as_view(), name='login'),
     path('logout/', LogoutUser.as_view(), name='logout'),
+    path('labels/', include('labels.urls', namespace='labels')),
 ]
