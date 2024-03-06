@@ -40,8 +40,6 @@ class CreateTaskForm(forms.ModelForm):
             raise ValidationError(gettext("Task length cannot exceed 150 characters."))
         return name
 
-
-
     def save(self, commit=True, *args, **kwargs):
         task = super(CreateTaskForm, self).save(commit=False, *args, **kwargs)
         if not task.performer_user_id:
@@ -49,3 +47,13 @@ class CreateTaskForm(forms.ModelForm):
         if commit:
             task.save()
         return task
+
+
+class TaskFilterForm(forms.Form):
+    status = forms.ModelChoiceField(queryset=Status.objects.all(), required=False, label=gettext('Status'),
+                                    widget=forms.Select(attrs={'class': 'form-select'}))
+    executor = forms.ModelChoiceField(queryset=get_user_model().objects.all(), required=False,
+                                      label=gettext('Executor'), to_field_name="id",
+                                      widget=forms.Select(attrs={'class': 'form-select'}))
+    self_tasks = forms.BooleanField(required=False, label=gettext('Only my tasks'),
+                                    widget=forms.CheckboxInput(attrs={'class': 'form-check-input'}))

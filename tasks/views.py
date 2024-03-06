@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.contrib.auth.mixins import LoginRequiredMixin, AccessMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.utils.translation import gettext
@@ -8,7 +8,7 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from task_manager.mixins import UserIsTaskCreatorOrSuperUserMixin
 from tasks.models import Tasks
 from statuses.models import Status
-from tasks.forms import CreateTaskForm
+from tasks.forms import CreateTaskForm, TaskFilterForm
 from task_manager.utils import FLASH_MESSAGES_TEXT
 
 
@@ -19,7 +19,27 @@ class TasksView(LoginRequiredMixin, ListView):
     title_page = gettext('Tasks')
 
     def get_queryset(self):
-        return Tasks.objects.only('id', 'name', 'status', 'created_by_user_id', 'time_create')
+        queryset = Tasks.objects.prefetch_related('status', 'created_by_user_id', 'performer_user_id')
+        form = TaskFilterForm(self.request.GET)
+
+        if form.is_valid():
+            status = form.cleaned_data.get('status')
+            executor = form.cleaned_data.get('executor')
+            self_tasks = form.cleaned_data.get('self_tasks')
+
+            if status:
+                queryset = queryset.filter(status=status)
+            if executor:
+                queryset = queryset.filter(performer_user_id=executor)
+            if self_tasks:
+                queryset = queryset.filter(created_by_user_id=self.request.user)
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['filter_form'] = TaskFilterForm(self.request.GET)
+        return context
 
 
 class TasksCreateView(LoginRequiredMixin, CreateView):

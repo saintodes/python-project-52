@@ -4,6 +4,13 @@
 {% block content %}
 <h1 class="my-4">{% trans "Tasks" %}</h1>
 <a class="btn btn-primary mb-3" href="{% url 'tasks:create' %}">{% trans 'Create a task' %}</a>
+
+<!-- Filtration form -->
+<form method="get" class="card-body bg-light">
+    {{ filter_form.as_p }}
+    <button type="submit" class="btn btn-primary mb3">{% trans 'Show' %}</button>
+</form>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -20,18 +27,22 @@
   {% if tasks_list %}
     {% for task in tasks_list %}
       <tr>
-        <td>{{task.id}}</td>
-        <td>{{task.name}}</td>
-        <td>{{task.status}}</td>
-        <td>{{task.created_by_user_id}}</td>
-        <td>{{task.performer_user_id}}</td>
-        <td>{{task.time_create|date:'d-m-Y H:i'}}</td>
+        <td>{{ task.id }}</td>
+        <td>{{ task.name }}</td>
+        <td>{{ task.status }}</td>
+        <td>{{ task.created_by_user_id }}</td>
+        <td>{{ task.performer_user_id }}</td>
+        <td>{{ task.time_create|date:'d-m-Y H:i' }}</td>
         <td>
           <a href="{% url 'tasks:update' task.id %}">{% trans 'Update' %}</a>
           <a href="{% url 'tasks:delete' task.id %}">{% trans 'Delete' %}</a>
         </td>
       </tr>
     {% endfor %}
+  {% else %}
+      <tr>
+          <td colspan="7">{% trans 'No tasks found' %}</td>
+      </tr>
   {% endif %}
   </tbody>
 </table>
