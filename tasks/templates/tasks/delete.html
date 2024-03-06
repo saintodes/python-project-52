@@ -1,0 +1,12 @@
+{% extends 'task_manager/base.html' %}
+{% load i18n %}
+
+
+{% block content %}
+<h1 class="my-4">{% trans "Task deletion" %}</h1>
+<form method="post">
+    <p>{% trans 'Are you sure you want to delete ' %} {{ status.name }}?</p>
+    {% csrf_token %}
+    <input class="btn btn-danger" type="submit" value='{% trans 'Yes, delete'%}'>
+</form>
+{% endblock %}
