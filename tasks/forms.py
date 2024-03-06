@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext
 
+from labels.models import Labels
 from .models import Tasks
 from statuses.models import Status
 
@@ -13,6 +14,13 @@ class CreateTaskForm(forms.ModelForm):
         empty_label='----------',
         widget=forms.Select(attrs={'class': 'form-select'}),
     )
+
+    label = forms.ModelMultipleChoiceField(
+        queryset=Labels.objects.all(),
+        required=False,
+        widget=forms.SelectMultiple(attrs={'class': 'form-select'}),
+    )
+
     performer_user_id = forms.ModelChoiceField(
         queryset=get_user_model().objects.all(),
         empty_label='---------',
@@ -22,7 +30,7 @@ class CreateTaskForm(forms.ModelForm):
 
     class Meta:
         model = Tasks
-        fields = ['name', 'description', 'status', 'performer_user_id']
+        fields = ['name', 'description', 'status', 'performer_user_id', 'label']
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': gettext('Name')}),
             'description': forms.Textarea(attrs={'class': 'form-control', 'placeholder': gettext('Description')}),
@@ -31,6 +39,7 @@ class CreateTaskForm(forms.ModelForm):
             'name': gettext('Name'),
             'description': gettext('Description'),
             'status': gettext('Status'),
+            'label': gettext('Label'),
             'performer_user_id': gettext('Performer'),
         }
 
@@ -46,12 +55,19 @@ class CreateTaskForm(forms.ModelForm):
             task.performer_user_id = task.created_by_user_id
         if commit:
             task.save()
+            self.save_m2m()
         return task
 
 
 class TaskFilterForm(forms.Form):
-    status = forms.ModelChoiceField(queryset=Status.objects.all(), required=False, label=gettext('Status'),
-                                    widget=forms.Select(attrs={'class': 'form-select'}))
+    status = forms.ModelChoiceField(
+        queryset=Status.objects.all(), required=False, label=gettext('Status'),
+        widget=forms.Select(attrs={'class': 'form-select'}))
+    label = forms.ModelChoiceField(
+        queryset=Labels.objects.all(), required=False, label=gettext('Метка'),
+        widget=forms.Select(attrs={'class': 'form-select'}),
+        empty_label="---------"
+    )
     executor = forms.ModelChoiceField(queryset=get_user_model().objects.all(), required=False,
                                       label=gettext('Executor'), to_field_name="id",
                                       widget=forms.Select(attrs={'class': 'form-select'}))
