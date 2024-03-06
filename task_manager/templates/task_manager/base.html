@@ -12,8 +12,9 @@
 <body>
 <header>
     {% include 'task_manager/navbar.html' %}
+    {% bootstrap_messages %}
 </header>
-{% bootstrap_messages %}
+
 <main>
     {% block content %}{% endblock %}
 </main>

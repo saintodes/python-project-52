@@ -15,3 +15,14 @@ class AuthPassesTestMixin(UserPassesTestMixin):
     def handle_no_permission(self):
         messages.warning(self.request, FLASH_MESSAGES_TEXT["change_user_data_auth_failed"])
         return redirect(reverse_lazy('users:users_list'))
+
+
+class UserIsTaskCreatorOrSuperUserMixin(UserPassesTestMixin):
+    def test_func(self):
+        task = self.get_object()
+        user = self.request.user
+        return task.created_by_user_id == user or user.is_superuser
+
+    def handle_no_permission(self):
+        messages.error(self.request, FLASH_MESSAGES_TEXT['change_task_data_auth_failed'])
+        return redirect(reverse_lazy('tasks:tasks_list'))
