@@ -1,9 +1,10 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
+from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.utils.translation import gettext
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 
 from task_manager.mixins import UserIsTaskCreatorOrSuperUserMixin
 from tasks.models import Tasks
@@ -83,3 +84,9 @@ class TasksDeleteView(UserIsTaskCreatorOrSuperUserMixin, LoginRequiredMixin, Del
         response = super().form_valid(form)
         messages.success(self.request, FLASH_MESSAGES_TEXT["task_delete_success"])
         return response
+
+
+class TaskShowView(LoginRequiredMixin, DetailView):
+    template_name = 'tasks/task.html'
+    model = Tasks
+    context_object_name = 'task'
