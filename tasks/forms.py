@@ -64,7 +64,7 @@ class TaskFilterForm(forms.Form):
         queryset=Status.objects.all(), required=False, label=gettext('Status'),
         widget=forms.Select(attrs={'class': 'form-select'}))
     label = forms.ModelChoiceField(
-        queryset=Labels.objects.all(), required=False, label=gettext('Метка'),
+        queryset=Labels.objects.all(), required=False, label=gettext('Label'),
         widget=forms.Select(attrs={'class': 'form-select'}),
         empty_label="---------"
     )
