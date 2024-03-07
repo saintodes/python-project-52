@@ -28,10 +28,11 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    'page-analyzer-ed71.onrender.com',
     '.onrender.com',
     ]
-
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.onrender.com',
+]
 
 # Application definition
 
