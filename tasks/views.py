@@ -1,49 +1,24 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
-from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.utils.translation import gettext
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
+from django.views.generic import CreateView, UpdateView, DeleteView, DetailView
+from django_filters.views import FilterView
 
 from task_manager.mixins import UserIsTaskCreatorOrSuperUserMixin
+from tasks.filters import TasksFilter
 from tasks.models import Tasks
-from statuses.models import Status
-from tasks.forms import CreateTaskForm, TaskFilterForm
+from tasks.forms import CreateTaskForm
 from task_manager.utils import FLASH_MESSAGES_TEXT
 
 
-# Create your views here.
-class TasksView(LoginRequiredMixin, ListView):
+class TasksView(LoginRequiredMixin, FilterView):
+    model = Tasks
     template_name = 'tasks/tasks_list.html'
     context_object_name = 'tasks_list'
     title_page = gettext('Tasks')
-
-    def get_queryset(self):
-        queryset = Tasks.objects.prefetch_related('status', 'created_by_user_id', 'performer_user_id')
-        form = TaskFilterForm(self.request.GET)
-
-        if form.is_valid():
-            status = form.cleaned_data.get('status')
-            executor = form.cleaned_data.get('executor')
-            label = form.cleaned_data.get('label')
-            self_tasks = form.cleaned_data.get('self_tasks')
-
-            if status:
-                queryset = queryset.filter(status=status)
-            if executor:
-                queryset = queryset.filter(performer_user_id=executor)
-            if self_tasks:
-                queryset = queryset.filter(created_by_user_id=self.request.user)
-            if label:
-                queryset = queryset.filter(label=label)
-
-        return queryset
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['filter_form'] = TaskFilterForm(self.request.GET)
-        return context
+    filterset_class = TasksFilter
 
 
 class TasksCreateView(SuccessMessageMixin, LoginRequiredMixin, CreateView):
