@@ -59,17 +59,17 @@ class CreateTaskForm(forms.ModelForm):
         return task
 
 
-class TaskFilterForm(forms.Form):
-    status = forms.ModelChoiceField(
-        queryset=Status.objects.all(), required=False, label=gettext('Status'),
-        widget=forms.Select(attrs={'class': 'form-select'}))
-    label = forms.ModelChoiceField(
-        queryset=Labels.objects.all(), required=False, label=gettext('Label'),
-        widget=forms.Select(attrs={'class': 'form-select'}),
-        empty_label="---------"
-    )
-    executor = forms.ModelChoiceField(queryset=get_user_model().objects.all(), required=False,
-                                      label=gettext('Executor'), to_field_name="id",
-                                      widget=forms.Select(attrs={'class': 'form-select'}))
-    self_tasks = forms.BooleanField(required=False, label=gettext('Only my tasks'),
-                                    widget=forms.CheckboxInput(attrs={'class': 'form-check-input'}))
+# class TaskFilterForm(forms.Form):
+#     status = forms.ModelChoiceField(
+#         queryset=Status.objects.all(), required=False, label=gettext('Status'),
+#         widget=forms.Select(attrs={'class': 'form-select'}))
+#     label = forms.ModelChoiceField(
+#         queryset=Labels.objects.all(), required=False, label=gettext('Label'),
+#         widget=forms.Select(attrs={'class': 'form-select'}),
+#         empty_label="---------"
+#     )
+#     executor = forms.ModelChoiceField(queryset=get_user_model().objects.all(), required=False,
+#                                       label=gettext('Executor'), to_field_name="id",
+#                                       widget=forms.Select(attrs={'class': 'form-select'}))
+#     self_tasks = forms.BooleanField(required=False, label=gettext('Only my tasks'),
+#                                     widget=forms.CheckboxInput(attrs={'class': 'form-check-input'}))
