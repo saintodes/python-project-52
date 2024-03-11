@@ -13,10 +13,10 @@ class Tasks(models.Model):
                                    related_name='task_labels')
     time_create = models.DateTimeField(auto_now_add=True, verbose_name='Creation Time')
     time_update = models.DateTimeField(auto_now=True, verbose_name='Update Time')
-    created_by_user_id = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, related_name='author',
-                                           null=True, blank=True, verbose_name="Author", db_index=True)
-    performer_user_id = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, related_name='performer',
-                                          null=True, blank=True, verbose_name="Performer", db_index=True)
+    author_id = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, related_name='author',
+                                  null=True, blank=True, verbose_name="Author", db_index=True)
+    executor_id = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, related_name='performer',
+                                    null=True, blank=True, verbose_name="Executor", db_index=True)
 
     class Meta:
         verbose_name = gettext('Task')

@@ -29,7 +29,7 @@ class TasksCreateView(SuccessMessageMixin, LoginRequiredMixin, CreateView):
     success_message = FLASH_MESSAGES_TEXT['task_create_success']
 
     def form_valid(self, form):
-        form.instance.created_by_user_id = self.request.user
+        form.instance.author_id = self.request.user
         return super().form_valid(form)
 
 

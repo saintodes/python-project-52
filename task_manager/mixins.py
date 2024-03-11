@@ -19,7 +19,7 @@ class UserIsTaskCreatorOrSuperUserMixin(UserPassesTestMixin):
     def test_func(self):
         task = self.get_object()
         user = self.request.user
-        return task.created_by_user_id == user or user.is_superuser
+        return task.author_id == user or user.is_superuser
 
     def handle_no_permission(self):
         messages.error(self.request, self.error_message)
