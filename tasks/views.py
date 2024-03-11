@@ -46,44 +46,37 @@ class TasksView(LoginRequiredMixin, ListView):
         return context
 
 
-class TasksCreateView(LoginRequiredMixin, CreateView):
+class TasksCreateView(SuccessMessageMixin, LoginRequiredMixin, CreateView):
     form_class = CreateTaskForm
     template_name = 'tasks/create.html'
     extra_context = {'title': gettext("Create a task")}
     success_url = reverse_lazy('tasks:tasks_list')
+    success_message = FLASH_MESSAGES_TEXT['task_create_success']
 
     def form_valid(self, form):
         form.instance.created_by_user_id = self.request.user
         return super().form_valid(form)
 
 
-class TasksUpdateView(LoginRequiredMixin, UpdateView):
+class TasksUpdateView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     model = Tasks
     form_class = CreateTaskForm
     template_name = 'tasks/update.html'
     extra_context = {'title': gettext('Task update')}
+    success_message = FLASH_MESSAGES_TEXT['task_update_success']
     success_url = reverse_lazy('tasks:tasks_list')
     error_message = FLASH_MESSAGES_TEXT["change_task_data_auth_failed"]
 
-    def form_valid(self, form):
-        response = super().form_valid(form)
-        messages.success(self.request, FLASH_MESSAGES_TEXT["task_update_success"])
-        return response
 
-
-class TasksDeleteView(UserIsTaskCreatorOrSuperUserMixin, LoginRequiredMixin, DeleteView):
+class TasksDeleteView(UserIsTaskCreatorOrSuperUserMixin, SuccessMessageMixin, LoginRequiredMixin, DeleteView):
     model = Tasks
     template_name = 'tasks/delete.html'
     extra_context = {'title': gettext('Delete a task')}
+    success_message = FLASH_MESSAGES_TEXT['task_create_success']
     success_url = reverse_lazy('tasks:tasks_list')
     error_message = FLASH_MESSAGES_TEXT["change_task_data_auth_failed"]
     redirect_url = 'tasks:tasks_list'
     message_level = messages.ERROR
-
-    def form_valid(self, form):
-        response = super().form_valid(form)
-        messages.success(self.request, FLASH_MESSAGES_TEXT["task_delete_success"])
-        return response
 
 
 class TaskShowView(LoginRequiredMixin, DetailView):

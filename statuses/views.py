@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models.deletion import ProtectedError
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
@@ -21,23 +22,25 @@ class StatusesView(LoginRequiredMixin, ListView):
         return Status.objects.only('id', 'name', 'time_create')
 
 
-class CreateStatusView(LoginRequiredMixin, CreateView):
+class CreateStatusView(SuccessMessageMixin, LoginRequiredMixin, CreateView):
     form_class = CreateStatusForm
     template_name = 'statuses/create.html'
     extra_context = {'title': gettext("Create status")}
     success_url = reverse_lazy('statuses:statuses_list')
+    success_message = FLASH_MESSAGES_TEXT['status_create_success']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
 
-class StatusUpdateView(LoginRequiredMixin, UpdateView):
+class StatusUpdateView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     model = Status
     form_class = CreateStatusForm
     template_name = 'statuses/update.html'
     extra_context = {'title': gettext('Status update')}
     success_url = reverse_lazy('statuses:statuses_list')
+    success_message = FLASH_MESSAGES_TEXT['status_update_success']
 
     def form_valid(self, form):
         response = super().form_valid(form)
@@ -45,17 +48,16 @@ class StatusUpdateView(LoginRequiredMixin, UpdateView):
         return response
 
 
-class StatusDeleteView(LoginRequiredMixin, DeleteView):
+class StatusDeleteView(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
     model = Status
     template_name = 'statuses/delete.html'
     extra_context = {'title': gettext('Delete status')}
     success_url = reverse_lazy('statuses:statuses_list')
+    success_message = FLASH_MESSAGES_TEXT['status_delete_success']
 
     def post(self, request, *args, **kwargs):
         try:
-            response = super(StatusDeleteView, self).post(request, *args, **kwargs)
-            messages.success(request, gettext("Status deleted successfully"))
-            return response
+            return super(StatusDeleteView, self).post(request, *args, **kwargs)
         except ProtectedError:
             messages.error(request, FLASH_MESSAGES_TEXT['used_status_delete_failed'])
             return redirect('statuses:statuses_list')
