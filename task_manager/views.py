@@ -24,7 +24,8 @@ class LoginUser(SuccessMessageMixin, LoginView):
     success_message = FLASH_MESSAGES_TEXT['login_success']
 
 
-class LogoutUser(LogoutView):
+class LogoutUser(SuccessMessageMixin, LogoutView):
+    success_message = FLASH_MESSAGES_TEXT['logout_success']
     @method_decorator(csrf_protect)
     @method_decorator(never_cache)
     def dispatch(self, request, *args, **kwargs):
