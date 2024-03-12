@@ -1,0 +1,62 @@
+[
+{
+  "model": "labels.labels",
+  "pk": 1,
+  "fields": {
+    "name": "Urgent",
+    "time_create": "2024-03-11T18:14:00.246Z",
+    "time_update": "2024-03-11T18:14:00.246Z",
+    "author": 1
+  }
+},
+{
+  "model": "labels.labels",
+  "pk": 2,
+  "fields": {
+    "name": "High Priority",
+    "time_create": "2024-03-11T18:14:06.502Z",
+    "time_update": "2024-03-11T18:14:06.502Z",
+    "author": 1
+  }
+},
+{
+  "model": "labels.labels",
+  "pk": 3,
+  "fields": {
+    "name": "Medium Priority",
+    "time_create": "2024-03-11T18:14:12.896Z",
+    "time_update": "2024-03-11T18:14:12.896Z",
+    "author": 1
+  }
+},
+{
+  "model": "labels.labels",
+  "pk": 4,
+  "fields": {
+    "name": "Low Priority",
+    "time_create": "2024-03-11T18:14:19.779Z",
+    "time_update": "2024-03-11T18:14:19.779Z",
+    "author": 1
+  }
+},
+{
+  "model": "labels.labels",
+  "pk": 5,
+  "fields": {
+    "name": "Waiting on Others",
+    "time_create": "2024-03-11T18:14:26.748Z",
+    "time_update": "2024-03-11T18:14:26.748Z",
+    "author": 1
+  }
+},
+{
+  "model": "labels.labels",
+  "pk": 6,
+  "fields": {
+    "name": "Backlog",
+    "time_create": "2024-03-11T18:14:53.138Z",
+    "time_update": "2024-03-11T18:14:53.138Z",
+    "author": 1
+  }
+}
+]
