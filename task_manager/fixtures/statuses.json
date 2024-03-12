@@ -1,0 +1,62 @@
+[
+{
+  "model": "statuses.status",
+  "pk": 1,
+  "fields": {
+    "name": "Not processed",
+    "time_create": "2024-03-11T18:12:17.421Z",
+    "time_update": "2024-03-11T18:12:17.421Z",
+    "author": 1
+  }
+},
+{
+  "model": "statuses.status",
+  "pk": 2,
+  "fields": {
+    "name": "Accepted for processing",
+    "time_create": "2024-03-11T18:13:08.661Z",
+    "time_update": "2024-03-11T18:13:08.661Z",
+    "author": 1
+  }
+},
+{
+  "model": "statuses.status",
+  "pk": 3,
+  "fields": {
+    "name": "Being tested",
+    "time_create": "2024-03-11T18:13:19.372Z",
+    "time_update": "2024-03-11T18:13:19.372Z",
+    "author": 1
+  }
+},
+{
+  "model": "statuses.status",
+  "pk": 4,
+  "fields": {
+    "name": "Completed",
+    "time_create": "2024-03-11T18:13:23.921Z",
+    "time_update": "2024-03-11T18:13:23.921Z",
+    "author": 1
+  }
+},
+{
+  "model": "statuses.status",
+  "pk": 5,
+  "fields": {
+    "name": "Closed",
+    "time_create": "2024-03-11T18:13:28.525Z",
+    "time_update": "2024-03-11T18:13:28.525Z",
+    "author": 1
+  }
+},
+{
+  "model": "statuses.status",
+  "pk": 6,
+  "fields": {
+    "name": "On Hold",
+    "time_create": "2024-03-11T18:15:05.301Z",
+    "time_update": "2024-03-11T18:15:05.301Z",
+    "author": 1
+  }
+}
+]
