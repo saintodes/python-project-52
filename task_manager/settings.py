@@ -30,6 +30,7 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     '.onrender.com',
+    'webserver',
 ]
 CSRF_TRUSTED_ORIGINS = [
     'https://*.onrender.com',
