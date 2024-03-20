@@ -33,4 +33,5 @@ build:
 
 cov:
 	poetry run python -m coverage run manage.py test
-	poetry run coverage report
+	poetry run coverage xml -o coverage.xml
+
