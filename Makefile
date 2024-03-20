@@ -31,3 +31,6 @@ lint:
 build:
 	@./build.sh
 
+cov:
+	poetry run python -m coverage run manage.py test
+	poetry run coverage report
