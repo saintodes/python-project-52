@@ -52,17 +52,7 @@ else
         exit 1
     fi
 fi
-
-
-# Create db role
-COMMAND_CREATE_ROLE="CREATE ROLE $DB_USER WITH CREATEDB LOGIN PASSWORD '$DB_USER_PASSWORD';"
-if sudo -u postgres psql -c "$COMMAND_CREATE_ROLE"; then
-    echo "Database role '$DB_USER' created successfully."
-else
-    echo "Error: Failed to create database role '$DB_USER'."
-    exit 1
-fi
-
+s
 # Create db
 if sudo -u postgres createdb --owner=$DB_USER $DB_NAME; then
     echo "Database '$DB_NAME' created successfully."
