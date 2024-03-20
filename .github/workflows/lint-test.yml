@@ -30,6 +30,7 @@ jobs:
       - name: Run pytest
         env:
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: |
           make tests
       - name: Publish test coverage
