@@ -60,6 +60,18 @@ optional = false
 python-versions = ">=3.5"
 
 [[package]]
+name = "dj-database-url"
+version = "2.1.0"
+description = "Use Database URLs in your Django Application."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+Django = ">=3.2"
+typing-extensions = ">=3.10.0.0"
+
+[[package]]
 name = "django"
 version = "5.0.3"
 description = "A high-level Python web framework that encourages rapid development and clean, pragmatic design."
@@ -439,7 +451,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "aa894832a4c3cdbd5c63ac228df7daa58ebe5b912e117f1e0a39cb92355756c8"
+content-hash = "ebda1d023e3423c1e5533e2acda0e5649910c679b0b0336159385611aaa6e5be"
 
 [metadata.files]
 asgiref = []
@@ -448,6 +460,7 @@ certifi = []
 charset-normalizer = []
 colorama = []
 decorator = []
+dj-database-url = []
 django = []
 django-bootstrap5 = []
 django-extensions = []
