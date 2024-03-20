@@ -25,3 +25,9 @@ compile-messages:
 
 lint:
 	poetry run flake8 task_manager/ --count --select=E9,F63,F7,F82 --show-source --statistics
+
+.PHONY: build
+
+build:
+	@./build.sh
+
