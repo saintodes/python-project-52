@@ -13,9 +13,9 @@ ipython = "^8.21.0"
 django-filter = "^24.1"
 rollbar = "^0.16.3"
 python-dotenv = "^1.0.1"
-psycopg2 = "^2.9.9"
 dj-database-url = "^2.1.0"
 coverage = "^7.4.4"
+psycopg2-binary = "^2.9.9"
 [tool.poetry.dev-dependencies]
 flake8 = "^7.0.0"
 
