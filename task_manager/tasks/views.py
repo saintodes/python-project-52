@@ -7,9 +7,9 @@ from django.views.generic import CreateView, UpdateView, DeleteView, DetailView
 from django_filters.views import FilterView
 
 from task_manager.mixins import UserIsTaskCreatorOrSuperUserMixin
-from tasks.filters import TasksFilter
-from tasks.models import Tasks
-from tasks.forms import CreateTaskForm
+from task_manager.tasks.filters import TasksFilter
+from task_manager.tasks.models import Tasks
+from task_manager.tasks.forms import CreateTaskForm
 from task_manager.utils import FLASH_MESSAGES_TEXT
 
 

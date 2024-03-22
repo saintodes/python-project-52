@@ -1,6 +1,5 @@
-from django.contrib.auth.views import LogoutView
 from django.urls import path
-from users import views
+from task_manager.users import views
 
 app_name = 'users'
 urlpatterns = [

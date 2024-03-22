@@ -3,9 +3,9 @@ from django.forms import CheckboxInput, Select
 from django.utils.translation import gettext
 from django_filters import BooleanFilter, ModelChoiceFilter, FilterSet
 
-from labels.models import Labels
-from statuses.models import Status
-from tasks.models import Tasks
+from task_manager.labels.models import Labels
+from task_manager.statuses.models import Status
+from task_manager.tasks.models import Tasks
 
 
 class TasksFilter(FilterSet):

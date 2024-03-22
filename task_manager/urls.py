@@ -23,10 +23,10 @@ from task_manager.views import LogoutUser
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.tasks_home, name='home'),
-    path('users/', include('users.urls', namespace="users")),
-    path('tasks/', include('tasks.urls', namespace='tasks')),
-    path('statuses/', include('statuses.urls', namespace='statuses')),
+    path('users/', include('task_manager.users.urls', namespace="users")),
+    path('tasks/', include('task_manager.tasks.urls', namespace='tasks')),
+    path('statuses/', include('task_manager.statuses.urls', namespace='statuses')),
     path('login/', views.LoginUser.as_view(), name='login'),
     path('logout/', LogoutUser.as_view(), name='logout'),
-    path('labels/', include('labels.urls', namespace='labels')),
+    path('labels/', include('task_manager.labels.urls', namespace='labels')),
 ]
