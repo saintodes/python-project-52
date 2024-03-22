@@ -4,10 +4,9 @@ from django.contrib.auth.models import User
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
-from django.utils.translation import gettext
+from django.utils.translation import gettext as _
 
 from task_manager.mixins import AuthPassesTestMixin
-from task_manager.utils import FLASH_MESSAGES_TEXT
 from task_manager.users.forms import RegisterUserForm
 
 
@@ -15,9 +14,9 @@ from task_manager.users.forms import RegisterUserForm
 class RegisterUser(SuccessMessageMixin, CreateView):
     form_class = RegisterUserForm
     template_name = 'users/create.html'
-    extra_context = {'title': gettext("Registration")}
+    extra_context = {'title': _("Registration")}
     success_url = reverse_lazy('login')
-    success_message = FLASH_MESSAGES_TEXT['user_register_success']
+    success_message = _('The user has been successfully registered')
 
 
 class UsersView(ListView):
@@ -33,16 +32,16 @@ class UpdateUser(SuccessMessageMixin, AuthPassesTestMixin, LoginRequiredMixin, U
     model = get_user_model()
     form_class = RegisterUserForm
     template_name = 'users/update.html'
-    extra_context = {'title': gettext('User update')}
-    success_message = FLASH_MESSAGES_TEXT["change_user_data_success"]
+    extra_context = {'title': _('User update')}
+    success_message = _('The user has been successfully modified')
     success_url = reverse_lazy('users:users_list')
-    error_message = FLASH_MESSAGES_TEXT["change_user_data_auth_failed"]
+    error_message = _('You do not have permission to change another user.')
 
 
 class DeleteUser(SuccessMessageMixin, AuthPassesTestMixin, LoginRequiredMixin, DeleteView):
     model = get_user_model()
     template_name = 'users/delete.html'
-    extra_context = {'title': gettext('Delete user')}
-    success_message = FLASH_MESSAGES_TEXT["delete_user_success"]
+    extra_context = {'title': _('Delete user')}
+    success_message = _('The user has been successfully deleted')
     success_url = reverse_lazy('users:users_list')
-    error_message = FLASH_MESSAGES_TEXT["change_user_data_auth_failed"]
+    error_message = _('You do not have permission to change another user.')
