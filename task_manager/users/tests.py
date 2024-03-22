@@ -2,7 +2,7 @@ from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth.models import User
 
-from users.forms import RegisterUserForm
+from task_manager.users.forms import RegisterUserForm
 
 
 class RegisterUserTestCase(TestCase):

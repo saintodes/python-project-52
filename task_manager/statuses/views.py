@@ -7,8 +7,8 @@ from django.urls import reverse_lazy
 from django.utils.translation import gettext
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
-from statuses.forms import CreateStatusForm
-from statuses.models import Status
+from task_manager.statuses.forms import CreateStatusForm
+from task_manager.statuses.models import Status
 from task_manager.utils import FLASH_MESSAGES_TEXT
 
 

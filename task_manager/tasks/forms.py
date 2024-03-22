@@ -1,11 +1,8 @@
 from django import forms
-from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext
 
-from labels.models import Labels
 from .models import Tasks
-from statuses.models import Status
 
 
 class CreateTaskForm(forms.ModelForm):

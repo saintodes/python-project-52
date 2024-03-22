@@ -8,7 +8,7 @@ from django.utils.translation import gettext
 
 from task_manager.mixins import AuthPassesTestMixin
 from task_manager.utils import FLASH_MESSAGES_TEXT
-from users.forms import RegisterUserForm
+from task_manager.users.forms import RegisterUserForm
 
 
 # Create your views here.
