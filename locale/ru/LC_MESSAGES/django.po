@@ -62,7 +62,7 @@ msgstr "Создать метку"
 
 #: task_manager/labels/views.py:28
 msgid "The label has been successfully created"
-msgstr "Метка"
+msgstr "Метка успешно создана"
 
 #: task_manager/labels/views.py:39
 #, fuzzy
@@ -72,7 +72,7 @@ msgstr "Обновление данных пользователя"
 
 #: task_manager/labels/views.py:41
 msgid "The label has been successfully updated"
-msgstr "Метка успешно создана"
+msgstr "Метка успешно изменена"
 
 #: task_manager/labels/views.py:47 templates/labels/delete.html:6
 #, fuzzy
