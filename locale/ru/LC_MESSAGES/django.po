@@ -31,7 +31,6 @@ msgstr "Пароль"
 
 #: task_manager/labels/forms.py:13 task_manager/labels/forms.py:16
 #: task_manager/statuses/forms.py:13 task_manager/statuses/forms.py:16
-#: task_manager/statuses/models.py:7 task_manager/tasks/forms.py:14
 #: task_manager/tasks/models.py:7 templates/labels/labels_list.html:12
 #: templates/statuses/statuses_list.html:12 templates/tasks/tasks_list.html:18
 msgid "Name"
