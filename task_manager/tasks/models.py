@@ -15,7 +15,7 @@ class Tasks(models.Model):
     time_update = models.DateTimeField(auto_now=True, verbose_name='Update Time')
     author_id = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, related_name='author',
                                   null=True, blank=True, verbose_name=_("Author"), db_index=True)
-    executor_id = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, related_name='performer',
+    executor_id = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, related_name='executor',
                                     null=True, blank=True, verbose_name=_("Executor"), db_index=True)
 
     class Meta:

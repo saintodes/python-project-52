@@ -25,7 +25,7 @@ class Migration(migrations.Migration):
                 ('time_create', models.DateTimeField(auto_now_add=True, verbose_name='Creation Time')),
                 ('time_update', models.DateTimeField(auto_now=True, verbose_name='Update Time')),
                 ('author_id', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='author', to=settings.AUTH_USER_MODEL, verbose_name='Author')),
-                ('executor_id', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='performer', to=settings.AUTH_USER_MODEL, verbose_name='Executor')),
+                ('executor_id', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='executor', to=settings.AUTH_USER_MODEL, verbose_name='Executor')),
                 ('label', models.ManyToManyField(blank=True, related_name='task_labels', to='labels.labels', verbose_name='Label')),
                 ('status', models.ForeignKey(null=True, on_delete=django.db.models.deletion.PROTECT, to='statuses.status', verbose_name='Status')),
             ],
