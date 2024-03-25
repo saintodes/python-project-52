@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-25 15:59+0300\n"
+"POT-Creation-Date: 2024-03-25 16:59+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,7 +31,8 @@ msgstr "Пароль"
 
 #: task_manager/labels/forms.py:13 task_manager/labels/forms.py:16
 #: task_manager/statuses/forms.py:13 task_manager/statuses/forms.py:16
-#: task_manager/tasks/forms.py:14 templates/labels/labels_list.html:12
+#: task_manager/statuses/models.py:7 task_manager/tasks/forms.py:14
+#: task_manager/tasks/models.py:7 templates/labels/labels_list.html:12
 #: templates/statuses/statuses_list.html:12 templates/tasks/tasks_list.html:18
 msgid "Name"
 msgstr "Имя"
@@ -44,8 +45,6 @@ msgstr "Имя пользователя не может превышать 150 �
 
 #: task_manager/labels/models.py:14 task_manager/tasks/filters.py:18
 #: task_manager/tasks/models.py:12
-#, fuzzy
-#| msgid "Labels"
 msgid "Label"
 msgstr "Метки"
 
@@ -94,12 +93,25 @@ msgstr "Невозможно удалить метку, потому что он
 msgid "Status length cannot exceed 150 characters."
 msgstr "Имя пользователя не может превышать 150 символов "
 
-#: task_manager/statuses/models.py:14 templates/tasks/task.html:23
-#: templates/tasks/tasks_list.html:19
+#: task_manager/statuses/models.py:8 task_manager/tasks/models.py:14
 #, fuzzy
-#| msgid "Statuses"
+#| msgid "Creation date"
+msgid "Creation Time"
+msgstr "Дата создания"
+
+#: task_manager/statuses/models.py:9
+msgid "Update Time"
+msgstr "Дата обновления"
+
+#: task_manager/statuses/models.py:11 task_manager/tasks/models.py:17
+#: templates/tasks/task.html:15 templates/tasks/tasks_list.html:20
+msgid "Author"
+msgstr "Автор"
+
+#: task_manager/statuses/models.py:14 task_manager/tasks/models.py:10
+
 msgid "Status"
-msgstr "Статусы"
+msgstr "Статус"
 
 #: task_manager/statuses/models.py:15 task_manager/statuses/views.py:18
 #: templates/statuses/statuses_list.html:5
@@ -141,7 +153,8 @@ msgstr "Статус успешно удален"
 msgid "It's impossible to delete the status because it's being used."
 msgstr "Невозможно удалить статус, потому что она используется"
 
-#: task_manager/tasks/filters.py:17 templates/tasks/task.html:19
+#: task_manager/tasks/filters.py:17 task_manager/tasks/models.py:19
+#: templates/tasks/task.html:19
 msgid "Executor"
 msgstr "Исполнитель"
 
@@ -149,11 +162,9 @@ msgstr "Исполнитель"
 msgid "My tasks only"
 msgstr "Только свои задачи"
 
-#: task_manager/tasks/forms.py:15
-#, fuzzy
-#| msgid "Registration"
+#: task_manager/tasks/forms.py:15 task_manager/tasks/models.py:8
 msgid "Description"
-msgstr "Регистрация"
+msgstr "Описание"
 
 #: task_manager/tasks/forms.py:24
 #, fuzzy
@@ -173,7 +184,7 @@ msgid "Tasks"
 msgstr "Задачи"
 
 #: task_manager/tasks/views.py:26 templates/tasks/create.html:5
-
+#: templates/tasks/task.html:5 templates/tasks/tasks_list.html:6
 msgid "Create a task"
 msgstr "Создать задачу"
 
@@ -388,12 +399,6 @@ msgstr "Выход"
 msgid "Task deletion"
 msgstr "Удаление задачи"
 
-#: templates/tasks/task.html:15 templates/tasks/tasks_list.html:20
-#, fuzzy
-#| msgid "Authorisation"
-msgid "Author"
-msgstr "Авторизация"
-
 #: templates/tasks/tasks_list.html:11
 msgid "Show"
 msgstr "Показать"
@@ -407,7 +412,6 @@ msgid "No tasks found"
 msgstr "Задач не найдено"
 
 #: templates/users/create.html:27
-#| msgid "Registration"
 msgid "Register"
 msgstr "Зарегистрировать"
 
