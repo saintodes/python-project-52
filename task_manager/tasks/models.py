@@ -5,7 +5,7 @@ from django.utils.translation import gettext_lazy as _
 
 class Tasks(models.Model):
     name = models.CharField(max_length=150, verbose_name=_('Name'), unique=True)
-    description = models.CharField(max_length=150, verbose_name=_('Description'), null=True)
+    description = models.CharField(max_length=150, verbose_name=_('Description'), null=True, blank=True)
 
     status = models.ForeignKey('statuses.Status', on_delete=models.PROTECT, null=True, verbose_name=_('Status'),
                                db_index=True)
