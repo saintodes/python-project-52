@@ -413,7 +413,7 @@ msgstr "Задач не найдено"
 #: templates/users/create.html:27
 #| msgid "Registration"
 msgid "Register"
-msgstr "Регистрация"
+msgstr "Зарегистрировать"
 
 #: templates/users/delete.html:8
 msgid "Are you sure you want to delete"
