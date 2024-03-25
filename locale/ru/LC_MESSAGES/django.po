@@ -135,7 +135,7 @@ msgstr "Удаление пользователя"
 
 #: task_manager/statuses/views.py:50
 msgid "The status has been successfully deleted"
-msgstr "Статус успешно удалён"
+msgstr "Статус успешно удален"
 
 #: task_manager/statuses/views.py:56
 msgid "It's impossible to delete the status because it's being used."
