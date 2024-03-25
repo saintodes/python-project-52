@@ -411,7 +411,6 @@ msgid "No tasks found"
 msgstr "Задач не найдено"
 
 #: templates/users/create.html:27
-#, fuzzy
 #| msgid "Registration"
 msgid "Register"
 msgstr "Регистрация"
