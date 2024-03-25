@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-23 11:57+0300\n"
+"POT-Creation-Date: 2024-03-25 11:44+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -198,6 +198,10 @@ msgstr "Удаление пользователя"
 msgid "The task has been successfully deleted"
 msgstr "Задача успешно удалена"
 
+#: task_manager/users/forms.py:10 templates/task_manager/navbar.html:16
+msgid "Login"
+msgstr "Вход"
+
 #: task_manager/users/forms.py:12
 msgid ""
 "Required field. No more than 150 characters. Only letters, numbers, and "
@@ -206,9 +210,17 @@ msgstr ""
 "Обязательное поле. Не более 150 символов. Только буквы, цифры и символы @/./"
 "+/-/_."
 
+#: task_manager/users/forms.py:13
+msgid "Password"
+msgstr "Пароль"
+
 #: task_manager/users/forms.py:15 task_manager/users/forms.py:31
 msgid "Your password must contain at least 3 characters."
 msgstr "Ваш пароль должен содержать как минимум 3 символа."
+
+#: task_manager/users/forms.py:16
+msgid "Password repeat"
+msgstr "Повтор пароля"
 
 #: task_manager/users/forms.py:18
 msgid "Please enter your password again for confirmation."
@@ -351,7 +363,7 @@ msgstr "Вы уверены, что хотиле удалить"
 
 #: templates/labels/update.html:5
 msgid "Update a status"
-msgstr ""
+msgstr "Обновить статус"
 
 #: templates/statuses/create.html:5
 #, fuzzy
@@ -392,10 +404,6 @@ msgstr ""
 #: templates/task_manager/navbar.html:6
 msgid "Toggle navigation"
 msgstr "Переключить навигацию"
-
-#: templates/task_manager/navbar.html:16
-msgid "Login"
-msgstr "Вход"
 
 #: templates/task_manager/navbar.html:34
 msgid "Logout"
@@ -484,13 +492,6 @@ msgstr ""
 
 #: venv/lib/python3.10/site-packages/IPython/core/tests/test_completer.py:1637
 msgid "--"
-msgstr ""
-
-#: venv/lib/python3.10/site-packages/bootstrap5/components.py:17
-#: venv/lib/python3.10/site-packages/bootstrap5/templates/bootstrap5/form_errors.html:3
-#: venv/lib/python3.10/site-packages/bootstrap5/templates/bootstrap5/messages.html:4
-#: venv/lib/python3.10/site-packages/django_bootstrap5/components.py:26
-msgid "close"
 msgstr ""
 
 #: venv/lib/python3.10/site-packages/django/contrib/messages/apps.py:16
@@ -1701,6 +1702,10 @@ msgstr ""
 
 #: venv/lib/python3.10/site-packages/django/views/templates/default_urlconf.html:248
 msgid "Connect, get help, or contribute"
+msgstr ""
+
+#: venv/lib/python3.10/site-packages/django_bootstrap5/components.py:26
+msgid "close"
 msgstr ""
 
 #~ msgid "Hello, index!"
