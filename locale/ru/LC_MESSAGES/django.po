@@ -294,10 +294,8 @@ msgstr "Вы разлогинены"
 
 #: templates/labels/create.html:27 templates/statuses/create.html:27
 #: templates/tasks/create.html:27
-#, fuzzy
-#| msgid "Creation date"
 msgid "Create"
-msgstr "Дата создания"
+msgstr "Создать"
 
 #: templates/labels/delete.html:8 templates/statuses/delete.html:8
 #: templates/tasks/delete.html:8
