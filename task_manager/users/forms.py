@@ -8,7 +8,7 @@ from django.utils.translation import gettext as _
 
 class RegisterUserForm(UserCreationForm):
     username = forms.CharField(label=_("Login"), widget=forms.TextInput(attrs={'class': 'form-control'}),
-                               help_text=gettext(
+                               help_text=_(
                                    "Required field. No more than 150 characters. Only letters, numbers, and symbols. @/./+/-/_."))
     password1 = forms.CharField(label=_("Password"), widget=forms.PasswordInput(
         attrs={'class': 'form-control', "autocomplete": "new-password"}),
