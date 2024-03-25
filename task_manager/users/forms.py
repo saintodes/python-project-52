@@ -4,10 +4,12 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 import re
 from django.utils.translation import gettext as _
+from django.utils.translation import pgettext
+
 
 
 class RegisterUserForm(UserCreationForm):
-    username = forms.CharField(label=_("Login"), widget=forms.TextInput(attrs={'class': 'form-control'}),
+    username = forms.CharField(label=pgettext('users_form', "Login"), widget=forms.TextInput(attrs={'class': 'form-control'}),
                                help_text=_(
                                    "Required field. No more than 150 characters. Only letters, numbers, and symbols. @/./+/-/_."))
     password1 = forms.CharField(label=_("Password"), widget=forms.PasswordInput(
