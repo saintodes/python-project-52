@@ -13,9 +13,9 @@ class Tasks(models.Model):
                                    related_name='task_labels')
     time_create = models.DateTimeField(auto_now_add=True, verbose_name=_('Creation Time'))
     time_update = models.DateTimeField(auto_now=True, verbose_name='Update Time')
-    author_id = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, related_name='author',
+    author = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, related_name='author',
                                   null=True, blank=True, verbose_name=_("Author"), db_index=True)
-    executor_id = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, related_name='executor',
+    executor = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, related_name='executor',
                                     null=True, blank=True, verbose_name=_("Executor"), db_index=True)
 
     class Meta:

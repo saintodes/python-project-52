@@ -9,12 +9,12 @@ class CreateTaskForm(forms.ModelForm):
     class Meta:
 
         model = Tasks
-        fields = ['name', 'description', 'status', 'executor_id', 'label']
+        fields = ['name', 'description', 'status', 'executor', 'label']
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': gettext('Name')}),
             'description': forms.Textarea(attrs={'class': 'form-control', 'placeholder': gettext('Description')}),
             'status': forms.Select(attrs={'class': 'form-select'}),
-            'executor_id': forms.Select(attrs={'class': 'form-select'}),
+            'executor': forms.Select(attrs={'class': 'form-select'}),
             'label': forms.SelectMultiple(attrs={'class': 'form-select'}),
         }
 
@@ -26,8 +26,8 @@ class CreateTaskForm(forms.ModelForm):
 
     def save(self, commit=True, *args, **kwargs):
         task = super(CreateTaskForm, self).save(commit=False, *args, **kwargs)
-        if not task.executor_id:
-            task.executor_id = task.author_id
+        if not task.executor:
+            task.executor = task.author
         if commit:
             task.save()
             self.save_m2m()
