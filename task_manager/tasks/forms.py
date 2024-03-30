@@ -7,7 +7,6 @@ from .models import Tasks
 
 class CreateTaskForm(forms.ModelForm):
     class Meta:
-
         model = Tasks
         fields = ['name', 'description', 'status', 'executor', 'label']
         widgets = {
@@ -23,12 +22,3 @@ class CreateTaskForm(forms.ModelForm):
         if len(name) > 150:
             raise ValidationError(gettext("Task length cannot exceed 150 characters."))
         return name
-
-    def save(self, commit=True, *args, **kwargs):
-        task = super(CreateTaskForm, self).save(commit=False, *args, **kwargs)
-        if not task.executor:
-            task.executor = task.author
-        if commit:
-            task.save()
-            self.save_m2m()
-        return task
