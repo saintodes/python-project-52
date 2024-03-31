@@ -1,15 +1,19 @@
 {% extends 'task_manager/base.html' %}
 {% load i18n %}
+{% load django_bootstrap5 %}
 
 {% block content %}
 <h1 class="my-4">{% trans "Tasks" %}</h1>
 <a class="btn btn-primary mb-3" href="{% url 'tasks:create' %}">{% trans 'Create a task' %}</a>
 
 <!-- Filtration form -->
-<form method="get" class="card-body bg-light card mb-3">
-    {{ filter.form.as_p }}
-    <button type="submit" class="btn btn-primary mb3">{% trans 'Show' %}</button>
-</form>
+<div class="card mb-3">
+  <form method="get" class="card-body bg-light ">
+    {% bootstrap_form filter.form %}
+    <button type="submit" class="btn btn-primary">{% trans 'Show' %}</button>
+  </form>
+</div>
+
 
 <table class="table table-striped">
   <thead>
@@ -30,7 +34,7 @@
         <td>{{ task.id }}</td>
         <td><a href="{% url 'tasks:detail' task.pk %}">{{ task.name }}</a></td>
         <td>{{ task.status }}</td>
-        <td>{{ task.author }}</td>
+        <td>{{ task.author.get_full_name }}</td>
         <td>{{ task.executor.get_full_name }}</td>
         <td>{{ task.time_create|date:'d-m-Y H:i' }}</td>
         <td>

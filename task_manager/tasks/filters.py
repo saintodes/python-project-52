@@ -19,5 +19,5 @@ class TasksFilter(FilterSet):
     my_tasks = BooleanFilter(label=gettext('My tasks only'), widget=CheckboxInput(), method='get_my_tasks')
 
     def get_my_tasks(self, queryset, name, value):
-        result = queryset.filter(created_by_user_id=self.request.user.id)
+        result = queryset.filter(author=self.request.user.id)
         return result if value else queryset
