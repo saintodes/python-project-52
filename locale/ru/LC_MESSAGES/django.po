@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-31 10:46+0300\n"
+"POT-Creation-Date: 2024-03-31 12:14+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,7 +33,7 @@ msgstr "Пароль"
 #: task_manager/statuses/forms.py:13 task_manager/statuses/forms.py:16
 #: task_manager/statuses/models.py:7 task_manager/tasks/forms.py:14
 #: task_manager/tasks/models.py:7 templates/labels/labels_list.html:11
-#: templates/statuses/statuses_list.html:11 templates/tasks/tasks_list.html:18
+#: templates/statuses/statuses_list.html:11 templates/tasks/tasks_list.html:22
 msgid "Name"
 msgstr "Имя"
 
@@ -43,8 +43,7 @@ msgstr "Имя"
 msgid "Label length cannot exceed 150 characters."
 msgstr "Имя пользователя не может превышать 150 символов "
 
-#: task_manager/labels/models.py:14 task_manager/tasks/filters.py:18
-#: task_manager/tasks/models.py:12
+#: task_manager/labels/models.py:14 task_manager/tasks/models.py:12
 msgid "Label"
 msgstr "Метки"
 
@@ -104,12 +103,12 @@ msgid "Update Time"
 msgstr "Дата обновления"
 
 #: task_manager/statuses/models.py:11 task_manager/tasks/models.py:17
-#: templates/tasks/task.html:15 templates/tasks/tasks_list.html:20
+#: templates/tasks/task.html:15 templates/tasks/tasks_list.html:24
 msgid "Author"
 msgstr "Автор"
 
 #: task_manager/statuses/models.py:14 task_manager/tasks/models.py:10
-#: templates/tasks/task.html:23 templates/tasks/tasks_list.html:19
+#: templates/tasks/task.html:23 templates/tasks/tasks_list.html:23
 msgid "Status"
 msgstr "Статус"
 
@@ -153,12 +152,18 @@ msgstr "Статус успешно удален"
 msgid "It's impossible to delete the status because it's being used."
 msgstr "Невозможно удалить статус, потому что она используется"
 
-#: task_manager/tasks/filters.py:17 task_manager/tasks/models.py:19
-#: templates/tasks/task.html:19 templates/tasks/tasks_list.html:21
+#: task_manager/tasks/filters.py:18 task_manager/tasks/models.py:19
+#: templates/tasks/task.html:19 templates/tasks/tasks_list.html:25
 msgid "Executor"
 msgstr "Исполнитель"
 
 #: task_manager/tasks/filters.py:19
+#| msgid "Label"
+msgctxt "tasks_filter"
+msgid "Label"
+msgstr "Метка"
+
+#: task_manager/tasks/filters.py:20
 msgid "My tasks only"
 msgstr "Только свои задачи"
 
@@ -179,12 +184,12 @@ msgid "Task"
 msgstr "Задачи"
 
 #: task_manager/tasks/models.py:23 task_manager/tasks/views.py:19
-#: templates/task_manager/navbar.html:29 templates/tasks/tasks_list.html:5
+#: templates/task_manager/navbar.html:29 templates/tasks/tasks_list.html:6
 msgid "Tasks"
 msgstr "Задачи"
 
 #: task_manager/tasks/views.py:26 templates/tasks/create.html:5
-#: templates/tasks/tasks_list.html:6
+#: templates/tasks/tasks_list.html:7
 msgid "Create a task"
 msgstr "Создать задачу"
 
@@ -320,13 +325,13 @@ msgstr "Да, удалить"
 
 #: templates/labels/labels_list.html:12
 #: templates/statuses/statuses_list.html:12 templates/tasks/task.html:27
-#: templates/tasks/tasks_list.html:22 templates/users/users_list.html:12
+#: templates/tasks/tasks_list.html:26 templates/users/users_list.html:12
 msgid "Creation date"
 msgstr "Дата создания"
 
 #: templates/labels/labels_list.html:25 templates/labels/update.html:27
 #: templates/statuses/statuses_list.html:25 templates/statuses/update.html:27
-#: templates/tasks/task.html:43 templates/tasks/tasks_list.html:37
+#: templates/tasks/task.html:43 templates/tasks/tasks_list.html:41
 #: templates/tasks/update.html:27 templates/users/update.html:27
 #: templates/users/users_list.html:26
 msgid "Update"
@@ -334,7 +339,7 @@ msgstr "Изменить"
 
 #: templates/labels/labels_list.html:26
 #: templates/statuses/statuses_list.html:26 templates/tasks/task.html:45
-#: templates/tasks/tasks_list.html:38 templates/users/users_list.html:27
+#: templates/tasks/tasks_list.html:42 templates/users/users_list.html:27
 msgid "Delete"
 msgstr "Удалить"
 
@@ -404,11 +409,11 @@ msgstr "Удаление задачи"
 msgid "View Task"
 msgstr "Просмотр задачи"
 
-#: templates/tasks/tasks_list.html:11
+#: templates/tasks/tasks_list.html:13
 msgid "Show"
 msgstr "Показать"
 
-#: templates/tasks/tasks_list.html:44
+#: templates/tasks/tasks_list.html:48
 msgid "No tasks found"
 msgstr "Задач не найдено"
 
