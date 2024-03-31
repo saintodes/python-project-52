@@ -41,7 +41,9 @@ class RegisterUserFormTest(TestCase):
             'password2': '12',
         })
         self.assertFalse(form.is_valid())
-        self.assertEqual(form.errors['password1'], ['Your password must contain at least 3 characters.'])
+        # self.assertEqual(form.errors['password1'], ['Your password must contain at least 3 characters.'])
+        self.assertEqual(form.errors['password1'], ['Ваш пароль должен содержать как минимум 3 символа.'])
+
 
     def test_username_validation(self):
         form = RegisterUserForm(data={
@@ -50,8 +52,10 @@ class RegisterUserFormTest(TestCase):
             'password2': 'password123',
         })
         self.assertFalse(form.is_valid())
+        # self.assertEqual(form.errors['username'],
+        #                  ['The username can only contain letters, numbers, and the symbols @/./+/-/_.'])
         self.assertEqual(form.errors['username'],
-                         ['The username can only contain letters, numbers, and the symbols @/./+/-/_.'])
+                         ['Введите правильное имя пользователя. Оно может содержать только буквы, цифры и знаки @/./+/-/_.'])
 
     def test_form_with_valid_data(self):
         form = RegisterUserForm(data={
@@ -70,7 +74,8 @@ class RegisterUserFormTest(TestCase):
             'password2': 'password123',
         })
         self.assertFalse(form.is_valid())
-        self.assertEqual(form.errors['username'], ['The username length cannot exceed 150 characters.'])
+        # self.assertEqual(form.errors['username'], ['The username length cannot exceed 150 characters.'])
+        self.assertEqual(form.errors['username'], ['Имя пользователя не может превышать 150 символов '])
 
 
 class UsersViewTestCase(TestCase):
