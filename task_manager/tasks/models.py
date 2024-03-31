@@ -9,7 +9,7 @@ class Tasks(models.Model):
 
     status = models.ForeignKey('statuses.Status', on_delete=models.PROTECT, null=True, verbose_name=_('Status'),
                                db_index=True)
-    label = models.ManyToManyField('labels.Labels', blank=True, verbose_name=_('Label'),
+    labels = models.ManyToManyField('labels.Labels', blank=True, verbose_name=_('Label'),
                                    related_name='task_labels')
     time_create = models.DateTimeField(auto_now_add=True, verbose_name=_('Creation Time'))
     time_update = models.DateTimeField(auto_now=True, verbose_name='Update Time')

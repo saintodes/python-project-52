@@ -9,13 +9,13 @@ from .models import Tasks
 class CreateTaskForm(forms.ModelForm):
     class Meta:
         model = Tasks
-        fields = ['name', 'description', 'status', 'executor', 'label']
+        fields = ['name', 'description', 'status', 'executor', 'labels']
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': gettext('Name')}),
             'description': forms.Textarea(attrs={'class': 'form-control', 'placeholder': gettext('Description')}),
             'status': forms.Select(attrs={'class': 'form-select'}),
             'executor': forms.Select(attrs={'class': 'form-select'}),
-            'label': forms.SelectMultiple(attrs={'class': 'form-select'}),
+            'labels': forms.SelectMultiple(attrs={'class': 'form-select'}),
         }
 
     def __init__(self, *args, **kwargs):
