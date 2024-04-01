@@ -1,7 +1,6 @@
 from django import forms
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext
-from django.contrib.auth import get_user_model
 
 from .models import Tasks
 
@@ -22,15 +21,6 @@ class CreateTaskForm(forms.ModelForm):
             'labels': forms.SelectMultiple(
                 attrs={'class': 'form-select'}),
         }
-
-    def __init__(self, *args, **kwargs):
-        super(CreateTaskForm, self).__init__(*args, **kwargs)
-        self.fields['executor'].queryset = get_user_model().objects.all()
-        self.fields['executor'].label_from_instance = self.format_executor_label
-
-    @staticmethod
-    def format_executor_label(obj):
-        return f"{obj.first_name} {obj.last_name}"
 
     def clean_name(self):
         name = self.cleaned_data.get('name')
