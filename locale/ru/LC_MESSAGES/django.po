@@ -205,7 +205,7 @@ msgstr "Обновление данных пользователя"
 
 #: task_manager/tasks/views.py:40
 msgid "The task has been successfully updated"
-msgstr "Задача успешно обновлена"
+msgstr "Задача успешно изменена"
 
 #: task_manager/tasks/views.py:42 task_manager/tasks/views.py:51
 msgid "Only the author can delete the task"
