@@ -14,10 +14,25 @@ class TasksFilter(FilterSet):
         model = Tasks
         fields = ['status', 'executor', 'labels', 'my_tasks']
 
-    status = ModelChoiceFilter(queryset=Status.objects.all(), widget=Select(attrs={'class': 'form-select'}))
-    executor = ModelChoiceFilter(queryset=get_user_model().objects.all(), label=gettext('Executor'), widget=Select(attrs={'class': 'form-select'}))
-    labels = ModelChoiceFilter(queryset=Labels.objects.all(), label=pgettext('tasks_filter', 'Label'), widget=Select(attrs={'class': 'form-select'}))
-    my_tasks = BooleanFilter(label=gettext('My tasks only'), widget=CheckboxInput(), method='get_my_tasks')
+    status = ModelChoiceFilter(
+        queryset=Status.objects.all(),
+        widget=Select(attrs={'class': 'form-select'})
+    )
+    executor = ModelChoiceFilter(
+        queryset=get_user_model().objects.all(),
+        label=gettext('Executor'),
+        widget=Select(attrs={'class': 'form-select'})
+    )
+    labels = ModelChoiceFilter(
+        queryset=Labels.objects.all(),
+        label=pgettext('tasks_filter', 'Label'),
+        widget=Select(attrs={'class': 'form-select'})
+    )
+    my_tasks = BooleanFilter(
+        label=gettext('My tasks only'),
+        widget=CheckboxInput(),
+        method='get_my_tasks'
+    )
 
     def get_my_tasks(self, queryset, name, value):
         result = queryset.filter(author=self.request.user.id)

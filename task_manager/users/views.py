@@ -1,6 +1,5 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.models import User
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
@@ -25,7 +24,7 @@ class UsersView(ListView):
     title_page = 'Users'
 
     def get_queryset(self):
-        return User.objects.only('id', 'username', 'first_name', 'last_name', 'date_joined')
+        return get_user_model().objects.only('id', 'username', 'first_name', 'last_name', 'date_joined')
 
 
 class UpdateUser(SuccessMessageMixin, AuthPassesTestMixin, LoginRequiredMixin, UpdateView):

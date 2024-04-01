@@ -1,6 +1,6 @@
+from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
-from django.contrib.auth.models import User
 
 from task_manager.users.forms import RegisterUserForm
 
@@ -22,14 +22,14 @@ class RegisterUserTestCase(TestCase):
         }
         response = self.client.post(reverse('users:create'), user_data)
         self.assertRedirects(response, reverse('login'))
-        self.assertEqual(User.objects.count(), 1)
+        self.assertEqual(get_user_model().objects.count(), 1)
         self.assertRedirects(response, reverse('login'))
 
     def test_register_view_post_error(self):
         response = self.client.post(reverse('users:create'), {})
         self.assertEqual(response.status_code, 200)
         self.assertFalse(response.context['form'].is_valid())
-        self.assertEqual(User.objects.count(), 0)
+        self.assertEqual(get_user_model().objects.count(), 0)
 
 
 class RegisterUserFormTest(TestCase):
@@ -82,8 +82,8 @@ class UsersViewTestCase(TestCase):
 
     @classmethod
     def setUpTestData(cls):
-        User.objects.create_user(username='user1', password='password123')
-        User.objects.create_user(username='user2', password='password123')
+        get_user_model().objects.create_user(username='user1', password='password123')
+        get_user_model().objects.create_user(username='user2', password='password123')
 
     def test_users_list_page(self):
         response = self.client.get(reverse('users:users_list'))
@@ -96,7 +96,7 @@ class UpdateUserTestCase(TestCase):
 
     @classmethod
     def setUpTestData(cls):
-        cls.user = User.objects.create_user(username='updateuser', password='password123', email='updateuser@test.com')
+        cls.user = get_user_model().objects.create_user(username='updateuser', password='password123', email='updateuser@test.com')
 
     def test_update_user_page(self):
         self.client.login(username='updateuser', password='password123')
@@ -132,7 +132,7 @@ class DeleteUserTestCase(TestCase):
 
     @classmethod
     def setUpTestData(cls):
-        cls.user = User.objects.create_user(username='deleteuser', password='password123')
+        cls.user = get_user_model().objects.create_user(username='deleteuser', password='password123')
 
     def test_delete_user_page(self):
         self.client.login(username='deleteuser', password='password123')
@@ -144,5 +144,5 @@ class DeleteUserTestCase(TestCase):
         self.client.login(username='deleteuser', password='password123')
         response = self.client.post(reverse('users:delete', kwargs={'pk': self.user.pk}))
         self.assertRedirects(response, reverse('users:users_list'))
-        with self.assertRaises(User.DoesNotExist):
-            User.objects.get(pk=self.user.pk)
+        with self.assertRaises(get_user_model().DoesNotExist):
+            get_user_model().objects.get(pk=self.user.pk)

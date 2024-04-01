@@ -1,5 +1,5 @@
+from django.contrib.auth import get_user_model
 from django.test import TestCase
-from django.contrib.auth.models import User
 from django.urls import reverse
 
 from .forms import CreateStatusForm
@@ -9,7 +9,7 @@ from .models import Status
 class StatusModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.user = User.objects.create_user(username='testuser', password='12345')
+        cls.user = get_user_model().objects.create_user(username='testuser', password='12345')
         cls.status = Status.objects.create(name='In Progress', author=cls.user)
 
     def test_status_content(self):
@@ -34,7 +34,7 @@ class StatusListViewTest(TestCase):
     def setUpTestData(cls):
         # Create multiple statuses to test the list view
         number_of_statuses = 5
-        cls.user = User.objects.create_user(username='testuser', password='testpass')
+        cls.user = get_user_model().objects.create_user(username='testuser', password='testpass')
         for status_num in range(number_of_statuses):
             Status.objects.create(name=f'Status {status_num}', author=cls.user)
 
@@ -53,7 +53,7 @@ class StatusListViewTest(TestCase):
 class CreateStatusViewTest(TestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.user = User.objects.create_user(username='testuser', password='12345')
+        cls.user = get_user_model().objects.create_user(username='testuser', password='12345')
 
     def test_create_status(self):
         self.client.login(username='testuser', password='12345')
@@ -64,7 +64,7 @@ class CreateStatusViewTest(TestCase):
 class StatusUpdateViewTest(TestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.user = User.objects.create_user(username='testuser', password='12345')
+        cls.user = get_user_model().objects.create_user(username='testuser', password='12345')
         cls.status = Status.objects.create(name='In Progress', author=cls.user)
 
     def test_update_status(self):
@@ -77,7 +77,7 @@ class StatusUpdateViewTest(TestCase):
 class StatusDeleteViewTest(TestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.user = User.objects.create_user(username='testuser', password='12345')
+        cls.user = get_user_model().objects.create_user(username='testuser', password='12345')
         cls.status = Status.objects.create(name='In Progress', author=cls.user)
 
     def test_delete_status(self):

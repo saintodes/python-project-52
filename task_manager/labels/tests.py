@@ -1,4 +1,3 @@
-from django.contrib.auth.models import User
 from django.test import TestCase
 from django.contrib.auth import get_user_model
 from django.urls import reverse
@@ -29,7 +28,7 @@ class CreateLabelsFormTest(TestCase):
 
 class CreateLabelsViewTest(TestCase):
     def setUp(self):
-        self.user = User.objects.create_user(username='testuser', password='testpass123')
+        self.user = get_user_model().objects.create_user(username='testuser', password='testpass123')
         self.client.login(username='testuser', password='testpass123')
 
     def test_view_url_exists_at_desired_location(self):
@@ -51,7 +50,7 @@ class CreateLabelsViewTest(TestCase):
                              f"/login/?next={reverse('labels:create')}")
 
     def test_redirect_if_not_logged_in(self):
-        self.client.logout()  # Ensure the user is logged out
+        self.client.logout()
         response = self.client.get(reverse('labels:create'))
         self.assertTrue(response.status_code, 302)
         self.assertRedirects(response, f"/login/?next={reverse('labels:create')}")
