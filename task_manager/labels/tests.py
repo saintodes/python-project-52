@@ -28,8 +28,14 @@ class CreateLabelsFormTest(TestCase):
 
 class CreateLabelsViewTest(TestCase):
     def setUp(self):
-        self.user = get_user_model().objects.create_user(username='testuser', password='testpass123')
-        self.client.login(username='testuser', password='testpass123')
+        self.user = get_user_model().objects.create_user(
+            username='testuser',
+            password='testpass123'
+        )
+        self.client.login(
+            username='testuser',
+            password='testpass123'
+        )
 
     def test_view_url_exists_at_desired_location(self):
         response = self.client.get('/labels/create/')
@@ -41,13 +47,11 @@ class CreateLabelsViewTest(TestCase):
         self.assertTemplateUsed(response, 'labels/create.html')
 
     def test_form_submission(self):
-        response = self.client.post(reverse('labels:create'), {'name': 'Test Label'})
+        response = self.client.post(
+            reverse('labels:create'),
+            {'name': 'Test Label'}
+        )
         self.assertEqual(response.status_code, 302)
-
-    def test_redirect_if_not_logged_in(self):
-        response = self.client.get(reverse('labels:create'))
-        self.assertRedirects(response,
-                             f"/login/?next={reverse('labels:create')}")
 
     def test_redirect_if_not_logged_in(self):
         self.client.logout()

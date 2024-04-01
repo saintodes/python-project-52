@@ -70,7 +70,13 @@ class StatusUpdateViewTest(TestCase):
     def test_update_status(self):
         status_id = self.status.id
         self.client.login(username='testuser', password='12345')
-        response = self.client.post(reverse('statuses:update', args=[status_id]), {'name': 'Updated Status'})
+        response = self.client.post(
+            reverse(
+                'statuses:update',
+                args=[status_id]
+            ),
+            {'name': 'Updated Status'}
+        )
         self.assertRedirects(response, reverse('statuses:statuses_list'))
 
 

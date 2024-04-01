@@ -24,7 +24,9 @@ class UsersView(ListView):
     title_page = 'Users'
 
     def get_queryset(self):
-        return get_user_model().objects.only('id', 'username', 'first_name', 'last_name', 'date_joined')
+        return get_user_model().objects.only(
+            'id', 'username', 'first_name', 'last_name', 'date_joined'
+        )
 
 
 class UpdateUser(SuccessMessageMixin, AuthPassesTestMixin, LoginRequiredMixin, UpdateView):

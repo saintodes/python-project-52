@@ -4,7 +4,6 @@ from django.shortcuts import redirect
 from django.urls import reverse_lazy
 
 
-
 class AuthPassesTestMixin(UserPassesTestMixin):
     def test_func(self):
         user_being_edited = self.get_object()

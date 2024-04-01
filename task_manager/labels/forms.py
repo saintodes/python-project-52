@@ -10,7 +10,9 @@ class CreateLabelsForm(forms.ModelForm):
         model = Labels
         fields = ['name']
         widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': gettext('Name')}),
+            'name': forms.TextInput(
+                attrs={'class': 'form-control',
+                       'placeholder': gettext('Name')}),
         }
         labels = {
             'name': gettext('Name'),
@@ -21,4 +23,3 @@ class CreateLabelsForm(forms.ModelForm):
         if len(name) > 150:
             raise ValidationError(gettext("Label length cannot exceed 150 characters."))
         return name
-

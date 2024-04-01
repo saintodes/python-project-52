@@ -51,7 +51,9 @@ class LabelDeleteView(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
     def post(self, request, *args, **kwargs):
         label = self.get_object()
         if label.task_labels.exists():
-            messages.error(request, _("It's impossible to delete the label because it's being used."))
+            messages.error(
+                request, _("It's impossible to delete the label because it's being used.")
+            )
             return redirect(self.success_url)
         else:
             return super().post(request, *args, **kwargs)

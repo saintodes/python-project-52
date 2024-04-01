@@ -42,7 +42,12 @@ class TasksUpdateView(SuccessMessageMixin, LoginRequiredMixin, UpdateView):
     error_message = _('Only the author can delete the task')
 
 
-class TasksDeleteView(UserIsTaskCreatorOrSuperUserMixin, SuccessMessageMixin, LoginRequiredMixin, DeleteView):
+class TasksDeleteView(
+    UserIsTaskCreatorOrSuperUserMixin,
+    SuccessMessageMixin,
+    LoginRequiredMixin,
+    DeleteView
+):
     model = Tasks
     template_name = 'tasks/delete.html'
     extra_context = {'title': _('Delete a task')}

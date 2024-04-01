@@ -10,7 +10,12 @@ class CreateStatusForm(forms.ModelForm):
         model = Status
         fields = ['name']
         widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': gettext('Name')}),
+            'name': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': gettext('Name')
+                }
+            ),
         }
         labels = {
             'name': gettext('Name'),
@@ -21,4 +26,3 @@ class CreateStatusForm(forms.ModelForm):
         if len(name) > 150:
             raise ValidationError(gettext("Status length cannot exceed 150 characters."))
         return name
-

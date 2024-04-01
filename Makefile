@@ -24,7 +24,10 @@ compile-messages:
 	poetry run django-admin compilemessages
 
 lint:
-	poetry run flake8 task_manager/ --count --select=E9,F63,F7,F82 --show-source --statistics
+# 	poetry run flake8 task_manager/ --count --select=E9,F63,F7,F82 --show-source --statistic
+	poetry run flake8 task_manager/ --show-source --statistics --max-line-length=100 --exclude=task_manager/*/migrations/*
+
+
 
 .PHONY: build
 
