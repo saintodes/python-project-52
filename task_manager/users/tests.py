@@ -105,7 +105,7 @@ class UpdateUserTestCase(TestCase):
         cls.user = get_user_model().objects.create_user(
             username='updateuser',
             password='password123',
-            )
+        )
 
     def test_update_user_page(self):
         self.client.login(username='updateuser', password='password123')
