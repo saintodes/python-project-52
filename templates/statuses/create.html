@@ -2,28 +2,28 @@
 {% load i18n %}
 
 {% block content %}
-<h1>{% trans "Status create" %}</h1>
+    <h1>{% trans "Status create" %}</h1>
 
-<form method="post">
-    {% csrf_token %}
-    <input type="hidden" name="next" value="{{ next }}" />
-    <div class="form-error">{{ form.non_field_errors }}</div>
+    <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next }}"/>
+        <div class="form-error">{{ form.non_field_errors }}</div>
 
-    {% for field in form %}
-    <div class="mb-3">
-        <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
-        {{ field }}
+        {% for field in form %}
+            <div class="mb-3">
+                <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
 
-        {% if field.help_text %}
-        <div class="form-text">{{ field.help_text }}</div>
-        {% endif %}
+                {% if field.help_text %}
+                    <div class="form-text">{{ field.help_text }}</div>
+                {% endif %}
 
-        {% if field.errors %}
-        <div class="form-error">{{ field.errors }}</div>
-        {% endif %}
-    </div>
-    {% endfor %}
+                {% if field.errors %}
+                    <div class="form-error">{{ field.errors }}</div>
+                {% endif %}
+            </div>
+        {% endfor %}
 
-    <input class="btn btn-primary" type="submit" value="{% trans "Create" %}">
-</form>
+        <input class="btn btn-primary" type="submit" value="{% trans "Create" %}">
+    </form>
 {% endblock %}

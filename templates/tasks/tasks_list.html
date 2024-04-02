@@ -3,51 +3,51 @@
 {% load django_bootstrap5 %}
 
 {% block content %}
-<h1 class="my-4">{% trans "Tasks" %}</h1>
-<a class="btn btn-primary mb-3" href="{% url 'tasks:create' %}">{% trans 'Create a task' %}</a>
+    <h1 class="my-4">{% trans "Tasks" %}</h1>
+    <a class="btn btn-primary mb-3" href="{% url 'tasks:create' %}">{% trans 'Create a task' %}</a>
 
-<!-- Filtration form -->
-<div class="card mb-3">
-  <form method="get" class="card-body bg-light ">
-    {% bootstrap_form filter.form %}
-    <button type="submit" class="btn btn-primary">{% trans 'Show' %}</button>
-  </form>
-</div>
+    <!-- Filtration form -->
+    <div class="card mb-3">
+        <form method="get" class="card-body bg-light ">
+            {% bootstrap_form filter.form %}
+            <button type="submit" class="btn btn-primary">{% trans 'Show' %}</button>
+        </form>
+    </div>
 
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>{% trans 'Name' %}</th>
-      <th>{% trans 'Status' %}</th>
-      <th>{% trans 'Author' %}</th>
-      <th>{% trans 'Executor' %}</th>
-      <th>{% trans 'Creation date' %}</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-  {% if tasks_list %}
-    {% for task in tasks_list %}
-      <tr>
-        <td>{{ task.id }}</td>
-        <td><a href="{% url 'tasks:detail' task.pk %}">{{ task.name }}</a></td>
-        <td>{{ task.status }}</td>
-        <td>{{ task.author.full_name }}</td>
-        <td>{{ task.executor.full_name }}</td>
-        <td>{{ task.time_create|date:'d-m-Y H:i' }}</td>
-        <td>
-          <a href="{% url 'tasks:update' task.id %}">{% trans 'Update' %}</a>
-          <a href="{% url 'tasks:delete' task.id %}">{% trans 'Delete' %}</a>
-        </td>
-      </tr>
-    {% endfor %}
-  {% else %}
-      <tr>
-          <td colspan="7">{% trans 'No tasks found' %}</td>
-      </tr>
-  {% endif %}
-  </tbody>
-</table>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>{% trans 'Name' %}</th>
+            <th>{% trans 'Status' %}</th>
+            <th>{% trans 'Author' %}</th>
+            <th>{% trans 'Executor' %}</th>
+            <th>{% trans 'Creation date' %}</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if tasks_list %}
+            {% for task in tasks_list %}
+                <tr>
+                    <td>{{ task.id }}</td>
+                    <td><a href="{% url 'tasks:detail' task.pk %}">{{ task.name }}</a></td>
+                    <td>{{ task.status }}</td>
+                    <td>{{ task.author.full_name }}</td>
+                    <td>{{ task.executor.full_name }}</td>
+                    <td>{{ task.time_create|date:'d-m-Y H:i' }}</td>
+                    <td>
+                        <a href="{% url 'tasks:update' task.id %}">{% trans 'Update' %}</a>
+                        <a href="{% url 'tasks:delete' task.id %}">{% trans 'Delete' %}</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="7">{% trans 'No tasks found' %}</td>
+            </tr>
+        {% endif %}
+        </tbody>
+    </table>
 {% endblock %}
