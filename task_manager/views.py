@@ -21,6 +21,7 @@ class LoginUser(SuccessMessageMixin, LoginView):
     template_name = 'task_manager/login.html'
     extra_context = {'title': _('Authorisation')}
     success_message = _('You are logged in')
+    next_page = '/'
 
 
 class LogoutUser(LogoutView):

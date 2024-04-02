@@ -17,6 +17,7 @@ python-dotenv = "^1.0.1"
 dj-database-url = "^2.1.0"
 coverage = "^7.4.4"
 psycopg2-binary = "^2.9.9"
+social-auth-app-django = "^5.4.0"
 [tool.poetry.dev-dependencies]
 flake8 = "^7.0.0"
 
