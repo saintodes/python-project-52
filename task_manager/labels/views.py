@@ -55,5 +55,4 @@ class LabelDeleteView(SuccessMessageMixin, LoginRequiredMixin, DeleteView):
                 request, _("It's impossible to delete the label because it's being used.")
             )
             return redirect(self.success_url)
-        else:
-            return super().post(request, *args, **kwargs)
+        return super().post(request, *args, **kwargs)
